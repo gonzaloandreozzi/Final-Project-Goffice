@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+<%- include('./head.ejs')%>
+
+<body>
+
+    <%- include('./header2.ejs') %>
+
+    <main class="todo-productos-main">
+
+        <section class="contenedortotalCarrito">
+            <section class="contendedordeloscontendoresdelCarrito">
+                <section class="contenedor">
+                    <article class="contenedorproductorata">
+
+                        <article class="article-main">
+
+                            <article class="imagen-nombre-main2">
+                                <div class="imagen-div">
+                                    <h3>No tienes productos en tu carrito </h3>
+                                    <img src="/images/DSkAn68X4AAhpwZ.png" alt="" class="rata">
+                                </div>
+
+
+                                </div>
+                            </article>
+                        </article>
+                    </article>
+                </section>
+                <br>
+
+            </section>
+            <br>
+
+
+            </article>
+
+        </section>
+
+        <article class="articlecarruselC2">
+            <h1 class="productosIndex">Featured items you may like<button class="button-HOffice"> <i
+                        class="fas fa-arrow-circle-right"></i></button></h1>
+        </article>
+
+        <br>
+        <br>
+
+       <!-- Slider main container -->
+       <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            
+            <% for( let i = 0; i < products.length; i++ ) { %>
+                <div class="swiper-slide">
+                    <div class="slider-box">
+                        <h3 class="h3Carro"><%= products[i].name; %></h3>
+                        <div class="img-box">
+                            <img src="images/<%= products[i].image; %>">
+                        </div>
+
+                        <div class="detail-slider">
+                            <div class="estrellas">
+                                <span>
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <span>
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <span>
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <span>
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <span>
+                                    <i class="fa fa-star"></i>
+                                </span>
+
+                            </div>
+
+
+                            <p>$<%= products[i].price; %></p>
+                            <br>
+                            <div class="bottom">
+                                <form action="/carrito/agregar/<%= products[i].id %>" method="post">
+                                    <div class="btn__group">
+                                        <button type="submit" class="btn addToCart">Añadir carrito</button>
+                                        <a href="/detalle/<%= products[i].id %>" class="btn view">Vista</a>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            <% } %>
+
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons-->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+    </div>
+  
+        
+
+
+    </main>
+
+    <%- include('./footer.ejs') %>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="js/slider.js"></script>
+
+</body>
+
+</html>

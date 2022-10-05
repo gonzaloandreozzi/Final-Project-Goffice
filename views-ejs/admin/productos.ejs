@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../head.ejs')%>
+
+<body>
+
+    <%- include('../header2.ejs') %>
+
+    
+    <main class="todo-productos-main">
+
+        <% for (let i=0; i < productosJ.length ; i++) {%>
+            <br>
+            <section class="contenedor">
+
+
+
+                <article class="contenedorproducto">
+                    <h2 class="h2-nombre">
+                        <%= productosJ[i].name %>
+
+                    </h2>
+
+                    <article class="article-main">
+
+                        <article class="imagen-nombre-main">
+                            <div class="imagen-div">
+                                <img src="/images/<%= productosJ[i].image; %>" alt="Producto" id="img-main">
+                                <div class="descuento"><span id="discount" data-action="cart-can"
+                                        class="badge rounded-circle">
+                                        <%= productosJ[i].discount; %>%
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="descriptions-main">
+
+                                <%= productosJ[i].description; %>
+
+                            </div>
+
+                            <div class="button-box">
+
+
+                                
+                                
+
+                                <button class="button-main" id="buttonmain">
+                                    <%= productosJ[i].category; %>
+                                </button>
+
+                                <button class="button-main">
+                                    $<%= Math.round(productosJ[i].price - productosJ[i].discount/100 *
+                                        productosJ[i].price); %>
+                                </button>
+
+                                <button class="button-main" id="buttonmain">
+                                    Stock : <%= productosJ[i].stock; %>
+                                </button>
+
+                                <a class="botonEdit" href="/admin/productos/<%= productosJ[i].id; %>"><i class="far fa-edit"></i> </a>
+                            </div>
+                          
+                                
+                            
+                            
+                        </article>
+                    </article>
+                </article>
+                <br>
+            </section>
+            <% } %>
+    </main>
+
+    <%- include('../footer.ejs') %>
+
+</body>
+
+</html>

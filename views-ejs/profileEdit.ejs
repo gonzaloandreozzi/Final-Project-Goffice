@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('./head.ejs')%>
+<!-- body -->
+
+<body>
+
+    <!-- header -->
+    <%- include('./header2.ejs')%>
+    <!--</header> -->
+
+    <!-- main -->
+    <main class="main-detail">
+        <section class="main-detail-sectionPC">
+            <div class="title-product-detailPC">
+                <h2><%= user.first_name; %> <%= user.last_name; %></h2>
+
+            </div>
+            <div class="detail-imagePC">
+                <img id="general-detail-imagePC" src="/images/users/<%= user.image  %>" alt="articulo">
+            </div>
+
+        </section>
+        <br>
+        </section>
+        <section class="contenedor-detail">
+            <div class="title-product-detailPC">
+                <h2>USER DETAILS</h2>
+            </div>
+            <article class="description-productPC">
+                <form action="/users/profile/update/<%= user.id; %>/?_method=PUT" id="productForm" method="POST"
+                    enctype="multipart/form-data">
+
+                    <div class="boxpC">
+                        <label name="name">
+                            <H2>First Name</H2>
+                        </label>
+
+                        <input type="text" name="name" id="nombrePCrud" class="firstNameProfileEditValid" required minlength="6" value="<%= user.first_name; %>">
+                        <div class="error_firstNameProfileEdit"></div>
+                        <i class="far fa-edit"></i>
+                    </div>
+                    
+
+                    <div class="boxpC">
+                        <label name="lastname">
+                            <H2>Last Name</H2>
+                        </label>
+
+                        <input type="text" name="lastname" id="nombrePCrud" class="lastNameProfileEditValid" required minlength="6" value="<%= user.last_name; %>">
+                        <i class="far fa-edit"></i>
+                    </div>
+                    <div class="error_lastNameProfileEdit"></div>
+
+                    <div class="boxpC">
+                        <label name="phone_number">
+                            <h2>Phone Number</h2>
+                        </label>
+
+                        <input type="text" name="phonenumber" id="nombrePCrud" class="phoneNumberProfileEditValid" required value="<%= user.phone_number; %>">
+                        <i class="far fa-edit"></i>
+                    </div>
+                    <div class="error_phoneNumberProfileEdit"></div>
+                    <div class="boxpC">
+                        <label name="gender">
+                            <H2>Gender</H2>
+                        </label>
+
+                        <select name="gender" id="nombrePCrud2">
+                            <option value="x" selected>x</option>
+                            <option value="male">male</option>
+                            <option value="female">female</option>
+                        </select>
+                        <i class="far fa-edit"></i>
+                    </div>
+                    <div class="boxpC">
+                        <label name="image">
+                            <h2>Image</h2>
+                        </label>
+                        <input type="file" class="buy-now-button" id="imgProfileEditValid" name="image" required
+                            value="/images/<%= user.image; %>">
+                            <div class="error_imgProfileEdit"></div>
+
+                        <i class="far fa-edit"></i>
+                    </div>
+                    
+                    
+                    <br>
+                    <article class="precio-envio-detail">
+                        <div class="comprar-detailPC">
+                            <button type="submit" class="submit-cart-detail" id="submitProfileEditValid">Guardar Cambios</button>
+                        </div>
+                        <div class="error_submitProfileEdit"></div>
+
+                    </article>
+                </form>
+
+            </article>
+            <br>
+            
+
+           
+            <article class="precio-envio-detail">
+
+                <form action="/users/profile/delete/<%= user.id; %>/?_method=DELETE" method="POST">
+                    <div class="return-detail">
+                        <button type="submit" class="return-cart-detail">Eliminar</button>
+                    </div>
+                </form>
+
+            </article>
+
+            <br>
+            <br>
+            <br>
+
+
+    </main>
+    <!-- footer -->
+    <%- include('./footer')%>
+    <!-- </footer> -->
+</body>
+
+</html>

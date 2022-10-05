@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('../head.ejs')%>
+<!-- body -->
+
+<body>
+
+    <!-- header -->
+    <%- include('../header2.ejs')%>
+        <!--</header> -->
+
+        <!-- main -->
+        <main class="main-detail">
+            <section class="main-detail-sectionPC">
+              
+               
+
+            </section>
+            <br>
+            </section>
+            <section class="contenedor-detail">
+                <div class="title-product-detailPC">
+                    <h2>NUEVO PRODUCTO</h2>
+                </div>
+                <br>
+
+                <article class="description-productPC">
+                    <form action="/admin/productos" id="productForm" method="POST" enctype="multipart/form-data">
+
+                        <div class="boxpC">
+                            <label name="name">
+                                <H2>Name</H2>
+                            </label>
+
+                            <input type="text" name="name" id="nombrePCrud" class="namePV" value="<%= locals.old && old.name%>">
+                            <% if (locals.errors && errors.name) { %>
+                                <p class="feedback">
+                                    <%= nameErrors[0].msg %>
+                                </p>
+                                <% } %>
+                            <i class="far fa-edit"></i>
+                        </div>
+
+                        <div class="error_fieldPname"></div>
+
+                        <div class="boxpC">
+                            <label name="category">
+                                <h2>Category</h2>
+                            </label>
+
+                            
+
+                            <select name="category" id="nombrePCrud2" >
+                                
+                                <% categoryProducts.forEach(category => { %>
+                                    <option value="<%= category.id %>"><%= category.category %></option>
+                                    <% }); %>
+
+                            </select>
+                            <i class="far fa-edit"></i>
+                        </div>
+                        <div class="boxpC">
+                            <label name="description">
+                                <h2>Descripcion</h2>
+                            </label>
+
+                            <input type="text" name="description" class="descriptionPV" id="nombrePCrud" value="<%= locals.old && old.description%>">
+                            <% if (locals.errors && errors.description) { %>
+                                <p class="feedback">
+                                    <%= descriptionErrors[0].msg %>
+                                </p>
+                                <% } %>
+                            <i class="far fa-edit"></i>
+                        </div>
+
+                        <div class="error_fieldPdescription"></div>
+
+                        <div class="boxpC">
+                            <label name="discount">
+                                <h2>Discount</h2>
+                            </label>
+
+                            <input type="number" name="discount" id="nombrePCrud" value="<%= locals.old && old.discount%>">
+                            <% if (locals.errors && errors.discount) { %>
+                                <p class="feedback">
+                                    <%= discountErrors[0].msg %>
+                                </p>
+                                <% } %>
+                            <i class="far fa-edit"></i>
+                        </div>
+                        
+
+                        <div class="boxpC">
+                            <label name="price">
+                                <h2>Precio</h2>
+                            </label>
+
+                            <input type="number" name="price" class="pricePV" id="nombrePCrud" value="<%= locals.old && old.price%>">
+                            <% if (locals.errors && errors.price) { %>
+                                <p class="feedback">
+                                    <%= priceErrors[0].msg %>
+                                </p>
+                                <% } %>
+                            <i class="far fa-edit"></i>
+                        </div>
+
+                        <div class="error_fieldPprice"></div>
+
+                        <div class="boxpC">
+                            <label name="image">
+                                <h2>Image</h2>
+                            </label>
+                            <input type="file" class="imagePV"
+                            name="image">
+                            
+                            <i class="far fa-edit"></i>
+                        </div>
+
+                        <div class="error_fieldPimage"></div>
+                        
+                        <div class="boxpC">
+                            <label name="stock">
+                                <h2>Stock</h2>
+                            </label>
+
+                            
+
+                            <select name="stock" id="nombrePCrud2" >
+                                <option value="0">Out of Stock</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+
+                            </select>
+                            <i class="far fa-edit"></i>
+                        </div>
+                        <article class="precio-envio-detail">
+                            <div class="comprar-detailPC">
+                                <button type="submit" class="submit-cart-detail" id="SendProductsForm">Guardar Cambios</button>
+                            </div>
+                            <br>
+ <div class="error_fieldPSend"></div>
+                        </article>
+                    </form>
+
+                </article>
+                <br>
+                <article class="precio-envio-detail">
+                    <div class="return-detail">
+                        <button type="submit" class="return-cart-detail">Eliminar</button>
+                    </div>
+
+                   
+                </article>
+            </section>
+            <br>
+            <br>
+
+            <br>
+
+
+        </main>
+        <!-- footer -->
+        <%- include('../footer')%>
+            <!-- </footer> -->
+</body>
+
+</html>

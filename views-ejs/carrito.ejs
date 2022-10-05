@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('./head.ejs')%>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
+<body>
+
+    <%- include('./header2.ejs') %>
+
+<!-- 
+        <div class="e-address">
+            <button class="address">
+                <i class="fas fa-map-marker-alt fa-lg"> </i>
+                <p class="Send"> London HA9 0WS, Reino Unido</p>
+            </button>
+        </div> -->
+
+
+
+
+        <main class="todo-productos-main">
+
+            <section class="contenedortotalCarrito">
+                <section class="contendedordeloscontendoresdelCarrito">
+                    <% for (let i=0; i < productosJ.length ; i++) {%>
+                    <section class="contenedor">
+                        <article class="contenedorproducto">
+                            <h2 class="h2-nombre"><%= productosJ[i].name; %>
+
+                            </h2>
+
+                            <article class="article-main">
+
+                                <article class="imagen-nombre-main">
+                                    <div class="imagen-div">
+                                        <img src="images/<%= productosJ[i].image; %>" alt="Producto" id="img-main">
+                                    </div>
+
+                                    <div class="button-box">
+                                        <div class="quantity" data-quantity="conteiner">
+                                                <input class="cantidadMenos" data-quantity="pop" type="submit" value="-"
+                                                    name="pop">
+
+                                            <input class="cantidad" autocomplete="off" data-quantity="input" type="tel"
+                                                value="1" name="quantity">
+
+                                                <input class="cantidadMas" data-quantity="push" type="submit" value="+"
+                                                    name="push">
+
+                                            <div class="cart-inline-loading__quantity-selector"
+                                                data-region="quantity-loading"></div>
+
+                                        </div>
+
+                                        <p class="PrecioenCarrito"> $<%= productosJ[i].price; %></p>
+
+
+                                        <form action="/carrito/delete/<%= productosJ[i].id %>/?_method=DELETE" method="post">
+                                            <button class="button-main">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </article>
+                            </article>
+                        </article>
+                    </section>
+                    <br>
+                    <% } %>
+
+                </section>
+                <br>
+
+                <article class="precio-envio"> <div class="resumen">
+                            <h2>Resume</h2>
+
+                        </div>
+                    <% for (let i=0; i < productosJ.length ; i++) {%>
+                       
+                    <article class="productoCheckout">
+                        <div class="nombreProductoAgregado"> <%= productosJ[i].name; %></div>
+                        <div class="precioProductoAgregado"> $<%= productosJ[i].price; %></div>
+                    </article>
+                    <% } %>
+                    
+                    <div class="preciofinal">
+                        <h3>Total price $</h3>
+
+
+                        <h3 class="totalprice"><%= userCart.total_price; %></h3>
+
+
+
+                    </div>
+                    <a href="/carrito/checkout" class="hrefcheckout">
+                    <div class="comprar">
+                        <button class="botoncompra">
+                           Check-Out
+                        </button>
+                    </div>
+                    </a>
+                </article>
+
+            </section>
+            <br>
+
+            <article>
+                <h1 class="productosIndex">Featured items you may like<button class="button-HOffice"> <i
+                    class="fas fa-arrow-circle-right"></i></button></h1>
+            </article>
+
+            <br>
+
+
+
+            <!-- Slider main container -->
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    
+                    <% for( let i = 0; i < products.length; i++ ) { %>
+                        <div class="swiper-slide">
+                            <div class="slider-box">
+                                <h3 class="h3Carro"><%= products[i].name; %></h3>
+                                <div class="img-box">
+                                    <img src="images/<%= products[i].image; %>">
+                                </div>
+        
+                                <div class="detail-slider">
+                                    <div class="estrellas">
+                                        <span>
+                                            <i class="fa fa-star"></i>
+                                        </span>
+                                        <span>
+                                            <i class="fa fa-star"></i>
+                                        </span>
+                                        <span>
+                                            <i class="fa fa-star"></i>
+                                        </span>
+                                        <span>
+                                            <i class="fa fa-star"></i>
+                                        </span>
+                                        <span>
+                                            <i class="fa fa-star"></i>
+                                        </span>
+        
+                                    </div>
+        
+        
+                                    <p>$<%= products[i].price; %></p>
+                                    <br>
+                                    <div class="bottom">
+                                        <form action="/carrito/agregar/<%= products[i].id %>" method="post">
+                                            <div class="btn__group">
+                                                <button type="submit" class="btn addToCart">Añadir carrito</button>
+                                                <a href="/detalle/<%= products[i].id %>" class="btn view">Vista</a>
+                                            </div>
+                                        </form>
+                                    </div>
+        
+                                </div>
+        
+                            </div>
+                        </div>
+                    <% } %>
+    
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+    
+                <!-- If we need navigation buttons-->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+    
+                <!-- If we need scrollbar -->
+                <div class="swiper-scrollbar"></div>
+            </div>
+          
+
+            <!-- <section class="section-footer">
+                <section>
+
+                    <i class="fas fa-credit-card fa-2x" style="color: orangered;" id="icono-footer"></i><br>
+                    <h3 class="h3-footer">Pay with card or cash</h3><br>
+                    <p class="p-footer"> With Goffice Cash, you have installments without interest with card or cash in
+                        payment points. And it's always safe!</p>
+                </section>
+                <br>
+                <section>
+                    <i class="fas fa-gift fa-2x" style="color: orangered;" id="icono-footer"></i><br>
+                    <h3 class="h3-footer">Free shipping over $2,500</h3><br>
+                    <p class="p-footer">
+
+                        Just for being registered in Mercado Liebre you have free shipments in thousands of
+                        products. It is a Mercado Puntos benefit.</p>
+
+                </section>
+                <br>
+                <section>
+                    <i class="fas fa-user-shield fa-2x" style="color: orangered;" id="icono-footer"></i><br>
+                    <h3 class="h3-footer">Security, from start to finish</h3><br>
+                    <p class="p-footer">You do not like? Give it back! In Mercado Liebre, there is nothing you cannot
+                        do,
+                        because you are always protected.</p>
+                </section> -->
+        </main>
+        <div class="social-bar">
+       
+            <a href="" class="iconF"><i class="fab fa-facebook"></i></a>
+            <a href="" class="iconI"><i class="fab fa-instagram"></i></a>
+            <a href="" class="iconA"><i class="fas fa-at"></i></a>
+            <a href="" class="iconT"><i class="fab fa-twitter"></i></a>
+        </div>
+  <%- include('./footer.ejs') %>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="js/slider.js"></script>
+</body>
+
+      
+</html>
